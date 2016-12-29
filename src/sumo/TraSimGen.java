@@ -48,6 +48,13 @@ public class TraSimGen {
 			return;
 		}
 		
+		result = tlLogicGenerator.updateTLLogic();
+		
+		if(result == false) {
+			System.out.println("TlLogic info cannot be updated.");
+			return;
+		}
+		
 	}
 
 }

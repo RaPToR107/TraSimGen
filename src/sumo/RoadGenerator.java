@@ -22,7 +22,10 @@ public class RoadGenerator {
 					"--grid.x-number", xNumber.toString(), 
 					"--grid.y-number", yNumber.toString(), 
 					"--grid.length", gridLength.toString(),
-					"-o", netFileName});
+					"-o", netFileName,
+					"--no-turnarounds", "true",
+					"--no-left-connections", "true",
+					"-j","traffic_light"});
 			process.waitFor();
 			return true;
 		} catch (Exception e) {
