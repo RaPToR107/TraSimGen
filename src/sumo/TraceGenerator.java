@@ -20,6 +20,7 @@ public class TraceGenerator extends FileOperations {
 	
 	private void initializeFlows() {
 		Integer maxStepBetweenVehicles = propertiesAccessor.getInt("maxStepBetweenVehicles");
+		Integer minStepBetweenVehicles = propertiesAccessor.getInt("minStepBetweenVehicles");
 		Integer maxStartingTimeOfFlows = propertiesAccessor.getInt("maxStartingTimeOfFlows");
 		Integer xNumber = propertiesAccessor.getInt("xNumber");
 		Integer yNumber = propertiesAccessor.getInt("yNumber");
@@ -32,7 +33,7 @@ public class TraceGenerator extends FileOperations {
 			trafficFlow.setStartingPoint(new Point(i, 0));
 			trafficFlow.setEndPoint(new Point(i, yNumber - 1));
 			trafficFlow.setDirection(Direction.UP);
-			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles)+1);
+			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles-minStepBetweenVehicles)+1+minStepBetweenVehicles);
 			trafficFlow.setStartingTime(random.getNextInt(maxStartingTimeOfFlows));
 			trafficFlow.generateRoute();
 			trafficFlows.add(trafficFlow);
@@ -43,7 +44,7 @@ public class TraceGenerator extends FileOperations {
 			trafficFlow.setStartingPoint(new Point(i, yNumber - 1));
 			trafficFlow.setEndPoint(new Point(i, 0));
 			trafficFlow.setDirection(Direction.DOWN);
-			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles)+1);
+			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles-minStepBetweenVehicles)+1+minStepBetweenVehicles);
 			trafficFlow.setStartingTime(random.getNextInt(maxStartingTimeOfFlows));
 			trafficFlow.generateRoute();
 			trafficFlows.add(trafficFlow);
@@ -54,7 +55,7 @@ public class TraceGenerator extends FileOperations {
 			trafficFlow.setStartingPoint(new Point(0, i));
 			trafficFlow.setEndPoint(new Point(xNumber-1, i));
 			trafficFlow.setDirection(Direction.RIGHT);
-			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles)+1);
+			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles-minStepBetweenVehicles)+1+minStepBetweenVehicles);
 			trafficFlow.setStartingTime(random.getNextInt(maxStartingTimeOfFlows));
 			trafficFlow.generateRoute();
 			trafficFlows.add(trafficFlow);
@@ -64,7 +65,7 @@ public class TraceGenerator extends FileOperations {
 			trafficFlow.setStartingPoint(new Point(xNumber - 1, i));
 			trafficFlow.setEndPoint(new Point(0, i));
 			trafficFlow.setDirection(Direction.LEFT);
-			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles)+1);
+			trafficFlow.setProbability(random.getNextInt(maxStepBetweenVehicles-minStepBetweenVehicles)+1+minStepBetweenVehicles);
 			trafficFlow.setStartingTime(random.getNextInt(maxStartingTimeOfFlows));
 			trafficFlow.generateRoute();
 			trafficFlows.add(trafficFlow);
